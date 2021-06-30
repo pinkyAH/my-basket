@@ -1,0 +1,115 @@
+
+                               Technical Assignments
+                                   
+
+Assignment1: 
+https://github.com/pinkyAH/my-basket
+
+........................................................................................
+
+Assignment2: 
+
+https://github.com/pinkyAH/Search-redit
+
+.............................................................................................
+
+Assignment3: 
+
+
+import React, { useState } from "react";
+import axios from "axios";
+
+const App = () => {
+  const [username, setUsername] = useState("");
+  const [email, setemail] = useState("");
+  const [user, setUser] = useState()
+
+  const handleSubmit = async e => {
+    
+  };
+
+// if there's a user show the message below
+  if (user) {
+    return <div>{user.name} is loggged in</div>;
+  }
+
+  // if there's no user, show the login form
+  return (
+    <form onSubmit={handleSubmit}>
+      <label htmlFor="username">Username: </label>
+      <input
+        type="text"
+        value={username}
+        placeholder="enter a username"
+        onChange={({ target }) => setUsername(target.value)}
+      />
+      <div>
+        <label htmlFor="email">email: </label>
+        <input
+          type="email"
+          value={email}
+          placeholder="enter a email"
+          onChange={({ target }) => setemail(target.value)}
+        />
+      </div>
+      <button type="submit">Login</button>
+    </form>
+  );
+};
+
+export default App;
+
+
+........................................................................................
+
+Assignment4:
+ 
+interceptors
+
+https://www.tutorialspoint.com/reactjs-axios-interceptors
+
+
+.........................................................................................
+
+
+Assignment5:
+  
+
+import React from 'react';
+
+class MyComponent extends React.Component {
+ 
+    constructor(props) {
+      super(props);
+      this.clickHandler = this.clickHandler.bind(this);
+      this.myComponentDiv = React.createRef(this);
+    // set the default internal state
+    this.state = {
+      clicks: 0
+    };
+  }
+  componentDidMount() {
+    if (this.myComponentDiv.current){
+      this.myComponentDiv.current.onClick= this.clickHandler;
+    }
+  }
+  componentWillUnmount() {
+    this.myComponentDiv.removeEventListener('click', this.clickHandler);
+  }
+  clickHandler() {
+    this.setState({
+      clicks: this.clicks + 1
+    });
+  }
+  render() {
+    let children = this.props.children;
+    return (
+      <div className="My-component" ref="{this.myComponentDiv}">
+      <h2>My Component ({this.state.clicks} clickHandler)</h2>
+      <h3>{this.props.headerText}</h3>
+    {children}
+    </div>
+    );
+  }
+ }
+ export default MyComponent
